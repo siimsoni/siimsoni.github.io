@@ -1,0 +1,149 @@
+!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>SOLID - The Dependency-Inversion Principle</title>
+
+		<meta name="description" content="A presentation introducing the Dependency-Inversion Principle">
+		<meta name="author" content="Kristjan Siimson">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>SOLID</h1>
+					<h3>The Dependency-Inversion Principle</h3>
+					<p>a. High-level modules should not depend on low-level modules. Both should depend on abstractions.</p>
+					<p>b. Abstractions should not depend on details. Details should depend on abstractions.</p>
+					<p>
+						<small>Presentation by <a href="http://siimsoni.github.io/">Kristjan Siimson</a> / <a href="http://twitter.com/ksiimson">@ksiimson</a></small>
+					</p>
+					<p>
+						<small><a href="http://www.amazon.com/Software-Development-Principles-Patterns-Practices/dp/0135974445">Robert C. Martin “Agile Software Development: Principles, Patterns and Practices”</a></small>
+					</p>
+				</section>
+				
+								
+				<section>
+					<h2>Inversion of Ownership</h2>
+					
+					<p>Clients own their interfaces.</p>
+				</section>
+				
+				<section>				
+					<section>
+						<h2>Example</h2>
+						<img src="img/1-DependencyInversion-Example.png" />
+					</section>
+				
+					<section>
+						<h2>Example</h2>
+						<img src="img/2-DependencyInversion-Controllers.png" />
+						<p>
+							Assuming LoanService is one monolithic chunk, if it is segregated with interfaces it can be split
+							up without modifying any client code.
+						</p>
+					</section>
+					
+					<section>
+						<h2>Counter-Example</h2>
+						<img src="img/3-DependencyInversion-Service.png" />
+						<p>
+							When interfaces define what the service has to offer, changes to the service layer will have an
+							impact to controllers.
+						</p>
+					</section>
+	
+				</section>
+
+				<section>
+					<h2>A naïve heuristic</h2>
+					
+					<p>Depend on abstractions.</p>
+					
+					<ul>
+						<li>No variable should reference a concrete class.</li>
+						<li>No class derives from a concrete class.</li>
+						<li>No method overrides an implemented method of any of the base classes.</li>
+					</ul>
+					
+					<p>Powerful, but strictly speaking, it's not possible to follow.</p>
+				</section>
+				
+				<section>
+					<h2>Benefits</h2>
+					
+					<ul>
+						<li>Protects from changes in details.</li>
+						<li>Better reusability.</li>
+					</ul>
+				</section>
+				
+				<section>
+					<p><i>Resisting premature abstraction is as important as abstraction itself.</i></p>
+				</section>
+				
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
