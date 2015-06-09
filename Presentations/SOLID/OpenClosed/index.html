@@ -46,6 +46,12 @@
 					<p>
 						<small>Presentation by <a href="http://hakim.se">Kristjan Siimson</a> / <a href="http://twitter.com/ksiimson">@ksiimson</a></small>
 					</p>
+					<p>
+						<small><a href="http://www.amazon.com/Software-Development-Principles-Patterns-Practices/dp/0135974445">Robert C. Martin “Agile Software Development: Principles, Patterns and Practices”</a></small>
+					</p>
+					<p>
+						<small><a href="http://www.amazon.com/Object-Oriented-Software-Construction-CD-ROM-Edition/dp/0136291554">Bertrand Meyer “Object Oriented Software Construction”</a></small>
+					</p>
 				</section>
 
 				<section>
@@ -63,6 +69,46 @@
 				</section>
 				
 				<section>
+					<h2>Effect</h2>
+					<p>
+						Understandability and distribution of work. Take advantage of object
+						oriented design and the information hiding principle.
+					</p>
+					<p>
+						Add new code rather than change existing code.
+					</p>
+				</section>
+				
+				<section>
+					<h2>Example: Not Open and Closed</h2>
+					<img src="img/1-OpenClosed-BadExample.png" />
+					<p>Client is not open and closed.</p>
+				</section>
+				
+				<section>
+				
+					<section>
+						<h2>Example: Strategy Pattern</h2>
+						<img src="img/2-OpenClosed-StrategyPatternExample.png" />
+					</section>
+				
+					<section>
+						<h2>Example: Strategy Pattern</h2>
+						<ul>
+							<li>ClientInterface is an abstract class with abstract member functions. It represents the work that Client must do.</li>
+							<li>Why not AbstractServer? <i>Abstract classes are more closely associated to their clients than to the classes that implement them.</i>.</li>
+						</ul>
+					</section>
+				
+				</section>
+				
+				<section>
+					<h2>Example: Template Method</h2>
+					<img src="img/3-OpenClosed-TemplateMethodPatternExample.png" />
+					<p>Policy defines an abstract method which is implemented in Implementation.</p>
+				</section>
+				
+				<section>
 					<h2>Implementation inheritance</h2>
 					
 					<p>
@@ -73,9 +119,61 @@
 				<section>
 					<h2>When to use it?</h2>
 					
-					<p>Adhere to open closed principle when it is clear the component may be re-used.</p>
-					<p></p>
+					<p>
+						Adhere to open closed principle when it is clear the component may be re-used.
+					</p>
+					
+					<p>
+						Adherence to Open Closed principle is expensive. There is a limit to the amount of abstraction 
+						the developers can afford.
+					</p>
+					
+					<p>
+						Limit the application of the OCP to changes that are likely.
+					</p>
+					
+					<ol>
+						<li>Do the appropriate research.</li>
+						<li>Ask the appropriate questions.</li>
+						<li><i>Wait until the changes happen!</i></li>
+					</ol>
 				</section>
+
+				<section>
+					<h2>Example</h2>
+					
+					<p>
+						Wordpress plugins. The problem with hooks is that they are often incorrect.
+					</p>
+				</section>
+				
+				<section>
+					<h2>Fool Me Once...</h2>
+					<p>Fool me once, shame on you. Fool me twice, shame on me.</p>
+					<p>
+						Expect no change until there actually is a change, then create appropriate
+						abstractions to protect against further changes of the same type.
+					</p>
+				</section>
+				
+				<section>
+					<h2>Stimulating Change</h2>
+					<p>
+						The longer we wait what kind of changes are likely, the harder it will
+						be to create the appropriate abstractions.
+					</p>
+					<ul>
+						<li>Write tests first.</li>
+						<li>Develop in cycles of days, not weeks.</li>
+						<li>Develop features before infrastructure and show these to stakeholders.</li>
+						<li>Develop the most important features first.</li>
+						<li>Release software early and often.</li>
+					</ul>
+				</section>
+				
+			<section>
+				<p><i>Resisting premature abstraction is as important as abstraction itself.</i></p>
+			</section>
 
 			</div>
 
